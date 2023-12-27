@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="card mt-3 px-5 py-1">
+        <div class="row">
+            <div class="col-6">
+                <h4>{{restaurantInfo.name}}</h4>
+                <p>{{restaurantInfo.address}}</p>
+                <p>{{restaurantInfo.cuisineType}}</p>
+            </div>
+            <div class="col-6">
+                <p class="text-end">{{restaurantInfo.openingHours}}</p>
+                <p class="text-end">{{restaurantInfo.contactNo}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-3 border-0">
+        <div class="row">
+            <div class="col-7 border">
+                <div class="row">
+                    <h5 class="text-center my-2" *ngIf="foodsOfRestaurantByCategoryId.length !== 0">Foods Available</h5>
+                </div>
+                <div class="row">
+                    <p class="text-center my-2" *ngIf="foodsOfRestaurantByCategoryId.length===0">No Foods Available</p>
+                </div>
+                <div class="row g-0 mb-3 " *ngFor="let item of foodsOfRestaurantByCategoryId">
+                    <div class="col-md-4  position-relative">
+                        <img [src]="item.photoUrl" alt="Food Image"
+                            class="img-fluid top-0 start-0">
+                        <button (click)="addToCart(item.itemID)"
+                            class="btn btn-small btn-danger fixed-bottom  w-100   position-absolute "><i
+                                class="fa fa-plus mx-2" aria-hidden="true"></i>add</button>
+                    </div>
+                    <div class="col-md-8  ">
+                        <div class="card-body">
+                            <h5 class="card-title">{{item.menuItemName}}</h5>
+                            <p class="card-text">Price: {{item.price}}</p>
+                            <p class="card-text">{{item.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-5 border">
+                <div class="row">
+                    <h5 class="text-center my-2" *ngIf="cartItems.length !== 0">Cart Items</h5>
+                </div>
+                <div class="row">
+                    <h5 class="text-center my-2" *ngIf="cartItems.length===0">Food Cart Empty ! </h5>
+                </div>
+                <div class="row g-0 mb-3 " *ngFor="let item of cartItems">
+                    <div class="col-md-3  position-relative">
+                        <img [src]="item.photoUrl" alt="Food Image"
+                            class="img-thumbnail border-0 w-100 top-0 start-0">
+                    </div>
+                    <div class="col-md-6  ">
+                        <div class="card-body">
+                            <p class="card-title">{{item.menuItemName}}</p>
+                            <p class="card-text">Price: {{item.price}}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex align-items-center gap-2">
+                        <button (click)="decQuantity(item)" class="btn btn-small btn-danger">-</button>
+                        <span>{{item.quantity}}</span>
+                        <button (click)="addToCart(item.itemID)" class="btn btn-small btn-danger">+</button>
+                    </div>
+                </div>
+                <div class="row container gap-1" *ngIf="cartItems.length !== 0">
+                    <textarea [(ngModel)]="address" class="form-control focus-outline-none  max-height-150" cols="20" rows="2" placeholder="Enter Your Address" ></textarea>
+                    <p class="my-2">total : {{ totalAmount }}</p>                    
+                    <button class="btn btn-primary" (click)="placeOrder()">Place Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

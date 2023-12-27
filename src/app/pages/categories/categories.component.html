@@ -1,0 +1,14 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-3 mb-3" *ngFor="let item of foodCategory">
+            <div class="card border-0 " style="width:200px">
+                <a routerLink="/restaurant-items/{{item.categoryId}}">
+                    <img class="card-img-top rounded-image" [src]="item.photoUrl" alt="Card image">
+                </a>
+                <div class="card-body">
+                  <h4 class="card-title text-center">{{item.categoryName}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

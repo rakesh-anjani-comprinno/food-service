@@ -1,0 +1,10 @@
+<div class="row container">
+    <div class="col-md-4">
+        <div class="border my-1 px-2" *ngFor="let item of allOrders">
+            <h5>Restaurant : {{item.restaurantName}}</h5>
+            <p> OrderDate : {{item.orderDate | date:'dd-MM-yyyy h:mm a'}}</p>
+            <p>Total Amount : {{item.totalAmount}}</p>
+            <p>Order Id : {{item.orderId}}</p>
+        </div>
+    </div>
+</div>

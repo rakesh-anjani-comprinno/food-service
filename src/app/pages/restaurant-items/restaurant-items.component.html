@@ -1,0 +1,19 @@
+<div class="container mt-5">
+    <div class="row" *ngIf="restaurantsByFoodCategory.length === 0">
+        <h5>This Food Category is not present in any Restaurant !</h5>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 mb-3" *ngFor="let item of restaurantsByFoodCategory">
+            <div class="card border-0 " style="width:300px">
+                <a routerLink="/selected-items/{{item.restaurantID}}/{{item.categoryId}}">
+                    <img class="card-img-top" [src]="item.photoUrl" alt="Card image">
+                </a>
+                <div class="card-body">
+                  <h4 class="card-title text-center">{{item.restaurantName}}</h4>
+                  <p class="card-text text-center">{{item.description}}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
